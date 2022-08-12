@@ -1,0 +1,47 @@
+from collections import deque
+import sys
+
+def bfs(graph, start, visited):
+    queue = deque([start])
+    visited[start] = True
+
+    while queue:
+        v = queue.popleft()
+        for i in graph[v]:
+            if not visited[i]:
+                queue.append(i)
+                visited[i] = True
+                
+
+t = int(sys.stdin.readline())
+ 
+def beer(n):
+    listA = []
+    for i in range(n+2):
+        #입력을 받는 리스트
+        listA.append(list(map(int,sys.stdin.readline().split())))
+    graph = [[]]
+
+    for i in range(0,n+2):
+        #각 원소 사이 거리가 연결되어 있는지 체크하고 리스트 자료형으로 변환
+        chain=[]
+        for j in range(0,n+2):
+            if 0 < abs(listA[i][0]-listA[j][0]) + abs(listA[i][1]-listA[j][1]) <= 1000:
+                chain.append(j+1)
+        graph.append(chain)
+
+    visited = [False]*(n+3)
+    bfs(graph,1,visited)
+
+    if visited[n+2] == True:
+        return "happy"
+    else:
+        return "sad"
+
+resultList = []
+for x in range(t):
+    n = int(sys.stdin.readline())
+    resultList.append(beer(n))
+
+for result in resultList:
+    print(result)

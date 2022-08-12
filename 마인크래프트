@@ -1,0 +1,41 @@
+import sys
+N, M, B = map(int, sys.stdin.readline().split())
+
+A = []
+for i in range(N):
+    A += (list(map(int, sys.stdin.readline().split())))
+
+lengthA = len(A)
+averageA = round(sum(A) / lengthA)
+count = 0
+
+plusList =[]
+minusList = []
+
+while A:
+    subA = A.pop(0)-averageA 
+    if subA >=0:
+        plusList.append(subA)
+    else:
+        minusList.append(subA)
+    
+sumPlus = sum(plusList)    
+sumMinus = sum(minusList)
+lenPlus = len(plusList)
+lenMinus = len(minusList)
+
+x = B + sumPlus + sumMinus 
+
+while 1:    
+    if x < 0:
+        x += lengthA
+        sumPlus += lenPlus
+        sumMinus += lenMinus
+        averageA -=1
+        continue
+    else:
+        break
+
+count = sumPlus * 2 + sumMinus * -1
+
+print(count, averageA)

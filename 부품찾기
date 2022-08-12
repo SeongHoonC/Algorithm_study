@@ -1,0 +1,19 @@
+import sys
+
+n = sys.stdin.readline().rstrip()
+
+array = list(map(int,sys.stdin.readline().split()))
+
+m = sys.stdin.readline().rstrip()
+
+arrayFind = list(map(int,sys.stdin.readline().split()))
+
+array = set(array)
+
+print(array)
+
+for i in arrayFind:
+    if i in array:
+        print("yes")
+    else:
+        print("no")

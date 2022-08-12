@@ -1,0 +1,24 @@
+def solution(board, moves):
+    a = []
+    answer = 0
+    while moves:    #moves에 원소가 존재하면
+        i = moves.pop(0)-1  #index 1감소
+        j=0
+        while j<len(board) :
+            if board[j][i] != 0:
+                if a:
+                    if a[-1] == board[j][i]:
+                        a.pop()
+                        answer+=2
+                    else:
+                        a.append(board[j][i])
+                    board[j][i] = 0
+                    break
+                else: 
+                    a.append(board[j][i])
+                    board[j][i] = 0
+                    break
+            else:
+                j+=1
+   
+    return answer

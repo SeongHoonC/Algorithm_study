@@ -1,0 +1,12 @@
+import sys
+K, L = map(int, sys.stdin.readline().rstrip().split())
+
+A = dict()
+for i in range(L):
+    index = sys.stdin.readline().rstrip()
+    A[index] = i
+
+A = sorted(A.items(), key = (lambda x:x[1]))
+
+for i in range(min(K,len(A))):
+    print(A[i][0])

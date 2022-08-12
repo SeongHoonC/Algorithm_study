@@ -1,0 +1,10 @@
+import sys
+n = int(input())
+array = []
+for i in range(n):
+    array.append(int(input()))
+
+array = sorted(array,reverse=True)
+sys.stdout.write("안녕")
+for num in array:
+    sys.stdout.write(num," ")

@@ -1,0 +1,25 @@
+import sys
+
+while True:
+    try:
+        a, b, c, d, m, t = map(float, sys.stdin.readline().split())
+
+        def wtf(v):
+            return v**3 * a + v ** 2 * b + v * c + d
+
+        def binary_search(start, end, target):
+            mid = 0
+            while start <= end : 
+                mid = (start+end)/2  
+                mv = wtf(mid) * m
+                if mv < target:
+                    start = mid + 0.0001
+                else:
+                    end = mid - 0.0001
+            return mid
+
+        result = int(binary_search(0, 10000, t) * 100)
+        result = result/100
+        print("%.2f" %result)
+    except:
+        break

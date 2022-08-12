@@ -1,0 +1,38 @@
+d= [(1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,-1),(-1,1)]
+
+def func(m,n,listA):
+    
+    count = 0
+
+    def dfs(i, j):
+        if i>=n or i< 0 or j>=m or j<0:
+            return 0
+        
+        if listA[i][j] == 1 :
+            listA[i][j] = 2 #방문 처리
+            for (x,y) in d:
+                dfs(i+x,j+y) 
+
+    for i in range(n):
+        for j in range(m):
+            if listA[i][j] == 1:
+                count+=1
+                dfs(i,j)
+
+    return count
+
+countList = []
+
+while 1:
+    m,n = map(int,input().split())
+    listA = []
+    for i in range(n):
+        listA.append(list(map(int,input().split())))
+
+    if (m,n) == (0,0):
+        break
+    else:
+        countList.append(func(m,n,listA))
+
+for count in countList:
+    print(count)

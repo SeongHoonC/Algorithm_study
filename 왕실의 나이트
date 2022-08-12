@@ -1,0 +1,13 @@
+n = input()
+list = ['a','b','c','d','e','f','g','h']
+j = list.index(n[0])+1
+i = int(n[1])
+
+moves = [[2, -1], [2, 1] , [-1, 2], [1, 2] , [-2,-1], [-2,1], [-1,-2],[1,-2]]
+
+count=0
+for move in moves:
+    if (i + move[0]) in range(1,9) and (j + move[1]) in range(1,9):
+        count+=1
+
+print(count)

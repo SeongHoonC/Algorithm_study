@@ -1,0 +1,27 @@
+n,m = map(int,input().split())
+
+A = []
+count = 0
+
+for i in range(n):
+        A.append(list(map(int,input())))
+
+def func(i, j):
+    if i>=n or i< 0 or j>=m or j<0:
+        return 0
+    
+    if A[i][j] == 0 :
+        A[i][j] = 2 #방문 처리
+        print(i,j)
+        func(i+1,j)
+        func(i-1,j)
+        func(i,j+1)
+        func(i,j-1)
+
+for i in range(n):
+    for j in range(m):
+        if A[i][j] == 0:
+            count+=1
+            func(i,j)
+
+print(count)

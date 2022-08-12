@@ -1,0 +1,35 @@
+n = int(input())
+moves = list(input().split())
+
+first = [1,1]
+
+for move in moves:
+    if move == 'L':
+        if first[1] != 1:
+            i = 0 
+            j = -1
+      
+
+    elif move == 'R':
+        if first[1] != n-1:
+            i=0
+            j=1
+
+    elif move == 'U':
+        if first[0] != 1:
+            i = -1
+            j = 0
+
+    elif move == 'D':
+        if first[0] != n-1:
+            i = 1
+            j = 0
+    else:
+        print("올바른 값 입력")
+    
+    first[0] += i
+    first[1] += j
+    i=0 
+    j=0
+
+print(first[0], first[1])
