@@ -1,12 +1,14 @@
-import sys
-input = sys.stdin.readline
+data = "3+10*7"
+list_operator = []
+operator = ['+', '-', '*', '/']
+for i in range(len(data)):
+    if data[i] in operator:
+        list_operator.append(data[i])
 
-array = list(map(int, input().split()))
+for oper in operator:        
+    data=data.replace(oper,' ')
 
-sum = 0
-for i in array:
-    sum += i
 
-n = len(array)
-
-print(sum/n)
+data=list(data.split())
+print(data)
+print(list_operator)
